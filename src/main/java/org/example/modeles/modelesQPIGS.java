@@ -149,11 +149,11 @@ public class modelesQPIGS {
         this.temperatureDissipateurThermiqueOnduleur = temperatureDissipateurThermiqueOnduleur;
     }
 
-    public String getEtatAppareil() {
+    public byte getEtatAppareil() {
         return etatAppareil;
     }
 
-    public void setEtatAppareil(String etatAppareil) {
+    public void setEtatAppareil(byte etatAppareil) {
         this.etatAppareil = etatAppareil;
     }
 
