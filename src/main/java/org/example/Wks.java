@@ -5,10 +5,11 @@ import jssc.SerialPortException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.example.modeles.ModelesQPIGS;
 import org.example.modeles.ModelesQPIRI;
+import org.example.modeles.ModelesQPIWS;
 
 import java.nio.charset.StandardCharsets;
 
-import static jdk.internal.org.jline.utils.Colors.s;
+
 
 
 public class Wks extends LiaisonSerie {
@@ -20,6 +21,7 @@ public class Wks extends LiaisonSerie {
     private final byte CR = 0x0d;
     ModelesQPIGS qpigs = new ModelesQPIGS();
     ModelesQPIRI qpiri = new ModelesQPIRI();
+    ModelesQPIWS qpiws = new ModelesQPIWS();
 
     @Override
     public void serialEvent(SerialPortEvent event) {
@@ -56,10 +58,9 @@ public class Wks extends LiaisonSerie {
                 qpigs.setEtatAppareil(Byte.parseByte(dcp[20]));
 
 
-                System.out.println(s + "\n");
-
-                System.out.println("rÃ©ponse (hexa)  -> " + sb);
-                System.out.println("rÃ©ponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
+                System.out.println("réponse (hexa)  -> " + sb);
+                //System.out.println(sb.toString());
+                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
             }
 
             if (serialPort.getInputBufferBytesCount()==98) {
@@ -75,7 +76,44 @@ public class Wks extends LiaisonSerie {
                 qpiri.setCourantNominalReseau(dcp[2]);
                 qpiri.setTensionNominaleSortie(dcp[3]);
                 qpiri.setFrequenceNominaleSortie(dcp[4]);
-                qpiri
+                qpiri.setCourantNominalSortie(dcp[5]);
+                qpiri.setPuissanceApparenteNominaleSortie(dcp[6]);
+                qpiri.setPuissanceNominaleSortie_puissanceActive(dcp[7]);
+                qpiri.setTensionNominaleBatterie(dcp[8]);
+                qpiri.setTensionRechargeBatterie(dcp[9]);
+                qpiri.setBatterieSousTension(dcp[10]);
+                qpiri.setTensionApparenteBatterie(dcp[11]);
+                qpiri.setTensionFlottanteBatterie(dcp[12]);
+                qpiri.setTypeBatterie(dcp[13]);
+                qpiri.setCourantChargeACmax(dcp[14]);
+                qpiri.setCourantChargeMax(dcp[15]);
+                qpiri.setPlageTensionEntree(dcp[16]);
+                qpiri.setPrioriteSourceSortie(dcp[17]);
+                qpiri.setPrioriteSourceChargeur(dcp[18]);
+                qpiri.setNombreMaxParallele(dcp[19]);
+                qpiri.setTypeMachine(dcp[20]);
+                qpiri.setTopologie(dcp[21]);
+                qpiri.setModeSortie(dcp[22]);
+                qpiri.setTensionDechargeBatterie(dcp[23]);
+                qpiri.setConditionOKParallele(dcp[24]);
+                qpiri.setBilanPuissancePhotovoltaique(dcp[25]);
+
+
+                System.out.println("réponse (hexa)  -> " + sb);
+                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
+
+
+            }
+            if (serialPort.getInputBufferBytesCount()==42) {
+                Thread.sleep(500);
+                byte[] trameBrute = super.lireTrame(super.detecteSiReception());
+                StringBuilder sb = new StringBuilder();
+                for (byte b : trameBrute) {
+                    sb.append(String.format("%02X ", b));
+                }
+                String[] dcp = sb.toString().split(" ");
+
+
 
             }
         } catch (InterruptedException | SerialPortException e) {
