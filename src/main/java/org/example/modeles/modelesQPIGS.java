@@ -8,7 +8,7 @@ public class modelesQPIGS {
     private String courantChargeBatterie, courantEntree1, courantDechargeBatterie;
     private int capaciteBatterie;
     private String temperatureDissipateurThermiqueOnduleur;
-    private String etatAppareil;
+    private byte etatAppareil;
     private String decalageTensionBatterieVentilateursAllumes;
     private String versionEEPROM;
 
