@@ -1,6 +1,6 @@
 package org.example.modeles;
 
-public class modelesQPIGS {
+public class ModelesQPIGS {
     private String tensionReseaux, tensionSortie,tensionBUS, tensionBatterie, tensionEntree1, tensionBatterieSCC1;
     private String frequenceReseaux, frequenceSortie;
     private String puissanceApparenteSortie, puissanceActiveSortie, puissanceCharge1;

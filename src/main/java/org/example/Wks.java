@@ -3,12 +3,13 @@ package org.example;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
 import org.apache.commons.lang3.ArrayUtils;
-import org.example.modeles.modelesQPIGS;
+import org.example.modeles.ModelesQPIGS;
+import org.example.modeles.ModelesQPIRI;
 
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Objects;
+
+import static jdk.internal.org.jline.utils.Colors.s;
+
 
 public class Wks extends LiaisonSerie {
 
@@ -17,7 +18,8 @@ public class Wks extends LiaisonSerie {
     private final byte[] QPIWS = "QPIWS".getBytes(StandardCharsets.US_ASCII);
     private final byte START = 0x28;
     private final byte CR = 0x0d;
-    modelesQPIGS qpigs = new modelesQPIGS();
+    ModelesQPIGS qpigs = new ModelesQPIGS();
+    ModelesQPIRI qpiri = new ModelesQPIRI();
 
     @Override
     public void serialEvent(SerialPortEvent event) {
@@ -30,19 +32,52 @@ public class Wks extends LiaisonSerie {
                 for (byte b : trameBrute) {
                     sb.append(String.format("%02X ", b));
                 }
-                String[] dcp =  sb.toString().split(" ");
+                String[] dcp = sb.toString().split(" ");
                 qpigs.setTensionReseaux(dcp[0].replace("(", ""));
                 qpigs.setFrequenceReseaux(dcp[1]);
                 qpigs.setTensionSortie(dcp[2]);
                 qpigs.setFrequenceSortie(dcp[3]);
                 qpigs.setPuissanceApparenteSortie(dcp[4]);
                 qpigs.setPuissanceActiveSortie(dcp[5]);
-                qpigs.setP
-                    if(Objects.equals(dcp[7], s))
-                    System.out.println(s+"\n");
-                }
+                qpigs.setPourcentageChargeSortie(Integer.parseInt(dcp[6]));
+                qpigs.setTensionBUS(dcp[7]);
+                qpigs.setTensionBatterie(dcp[8]);
+                qpigs.setCourantChargeBatterie(dcp[9]);
+                qpigs.setCapaciteBatterie(Integer.parseInt(dcp[10]));
+                qpigs.setTemperatureDissipateurThermiqueOnduleur(dcp[11]);
+                qpigs.setCourantEntree1(dcp[12]);
+                qpigs.setTensionEntree1(dcp[13]);
+                qpigs.setTensionBatterieSCC1(dcp[14]);
+                qpigs.setCourantDechargeBatterie(dcp[15]);
+                qpigs.setEtatAppareil(Byte.parseByte(dcp[16]));
+                qpigs.setDecalageTensionBatterieVentilateursAllumes(dcp[17]);
+                qpigs.setVersionEEPROM(dcp[18]);
+                qpigs.setPuissanceCharge1(dcp[19]);
+                qpigs.setEtatAppareil(Byte.parseByte(dcp[20]));
+
+
+                System.out.println(s + "\n");
+
                 System.out.println("réponse (hexa)  -> " + sb);
-                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));}
+                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
+            }
+
+            if (serialPort.getInputBufferBytesCount()==98) {
+                Thread.sleep(500);
+                byte[] trameBrute = super.lireTrame(super.detecteSiReception());
+                StringBuilder sb = new StringBuilder();
+                for (byte b : trameBrute) {
+                    sb.append(String.format("%02X ", b));
+                }
+                String[] dcp = sb.toString().split(" ");
+                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
+                qpiri.setTensionNominaleReseau(dcp[1]);
+                qpiri.setCourantNominalReseau(dcp[2]);
+                qpiri.setTensionNominaleSortie(dcp[3]);
+                qpiri.setFrequenceNominaleSortie(dcp[4]);
+                qpiri
+
+            }
         } catch (InterruptedException | SerialPortException e) {
             throw new RuntimeException(e);
         }

@@ -1,8 +1,6 @@
 package org.example.modeles;
 
-import java.nio.charset.StandardCharsets;
-
-public class modelesQPIRI {
+public class ModelesQPIRI {
 
     private String tensionNominaleReseau, tensionNominaleSortie, tensionNominaleBatterie, tensionRechargeBatterie, tensionApparenteBatterie, tensionFlottanteBatterie;
     private String courantNominalReseau, courantNominalSortie, courantChargeACmax, courantChargeMax;

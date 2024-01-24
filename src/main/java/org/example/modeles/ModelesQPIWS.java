@@ -1,6 +1,6 @@
 package org.example.modeles;
 
-public class modelesQPIWS {
+public class ModelesQPIWS {
     private String reserved, reserve_Surcharge, reserveDeclassementBatterie;
     private String defaillanceOnduleur, defautEeprom, defaillanceCapteurCourant, defautSurchargeMPPT1, defautSurchargeMPPT2, defautSurchargeMPPT3;
     private String busOver, busSous, batOpen;
