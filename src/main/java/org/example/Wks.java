@@ -3,8 +3,12 @@ package org.example;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
 import org.apache.commons.lang3.ArrayUtils;
+import org.example.modeles.modelesQPIGS;
 
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Wks extends LiaisonSerie {
 
@@ -13,6 +17,7 @@ public class Wks extends LiaisonSerie {
     private final byte[] QPIWS = "QPIWS".getBytes(StandardCharsets.US_ASCII);
     private final byte START = 0x28;
     private final byte CR = 0x0d;
+    modelesQPIGS qpigs = new modelesQPIGS();
 
     @Override
     public void serialEvent(SerialPortEvent event) {
@@ -21,8 +26,20 @@ public class Wks extends LiaisonSerie {
                 Thread.sleep(500);
                 byte[] trameBrute = super.lireTrame(super.detecteSiReception());
                 StringBuilder sb = new StringBuilder();
+
                 for (byte b : trameBrute) {
                     sb.append(String.format("%02X ", b));
+                }
+                String[] dcp =  sb.toString().split(" ");
+                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
+                qpigs.setFrequenceReseaux(dcp[1]);
+                qpigs.setTensionSortie(dcp[2]);
+                qpigs.setFrequenceSortie(dcp[3]);
+                qpigs.setPuissanceApparenteSortie(dcp[4]);
+                qpigs.setPuissanceActiveSortie(dcp[5]);
+                qpigs.setP
+                    if(Objects.equals(dcp[7], s))
+                    System.out.println(s+"\n");
                 }
                 System.out.println("réponse (hexa)  -> " + sb);
                 System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));}
