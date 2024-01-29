@@ -112,7 +112,45 @@ public class Wks extends LiaisonSerie {
                     sb.append(String.format("%02X ", b));
                 }
                 String[] dcp = sb.toString().split(" ");
-
+                qpiws.setReserved(dcp[1]);
+                String reserved = dcp[1];
+                qpiws.setDefaillanceOnduleur(dcp[2]);
+                qpiws.setBusOver(dcp[3]);
+                qpiws.setBusSous(dcp[4]);
+                qpiws.setEchecProgressifBus(dcp[5]);
+                qpiws.setLineFail(dcp[6]);
+                qpiws.setoPVShort(dcp[7]);
+                qpiws.setTensionOnduleurTropFaible(dcp[8]);
+                qpiws.setTensionOnduleurTropElevee(dcp[9]);
+                qpiws.setSurchauffe(dcp[10]);
+                qpiws.setVentilateurVerrouille(dcp[11]);
+                qpiws.setTensionBatterieElevee(dcp[12]);
+                qpiws.setAlarmeBatterieFaible(dcp[13]);
+                qpiws.setReserve_Surcharge(dcp[14]);
+                qpiws.setBatterieArret(dcp[15]);
+                qpiws.setReserveDeclassementBatterie(dcp[16]);
+                qpiws.setSurcharge(dcp[17]);
+                qpiws.setDefautEeprom(dcp[18]);
+                qpiws.setSurintensiteOnduleur(dcp[19]);
+                qpiws.setOnduleurSoftFail(dcp[20]);
+                qpiws.setEchecAuto_test(dcp[21]);
+                qpiws.setTensionContinueOPsur(dcp[22]);
+                qpiws.setBatOpen(dcp[23]);
+                qpiws.setDefaillanceCapteurCourant(dcp[24]);
+                qpiws.setBatteriecourte(dcp[25]);
+                qpiws.setLimitePuissance(dcp[26]);
+                qpiws.setTensionElevee1(dcp[27]);
+                qpiws.setDefautSurchargeMPPT1(dcp[28]);
+                qpiws.setAvertissementSurchargeMPPT1(dcp[29]);
+                qpiws.setBatterieTropFaiblePourEtreChargee1(dcp[30]);
+                qpiws.setTensionPVelevee2(dcp[31]);
+                qpiws.setDefautSurchargeMPPT2(dcp[32]);
+                qpiws.setAvertissementSurchargeMPPT2(dcp[33]);
+                qpiws.setBatterieTropFaiblePourCharger2(dcp[34]);
+                qpiws.setTensionPVelevee3(dcp[35]);
+                qpiws.setDefautSurchargeMPPT3(dcp[36]);
+                qpiws.setAvertissementSurchargeMPPT3(dcp[37]);
+                qpiws.setBatterieTropFaiblePourEtreChargee3(dcp[38]);
 
 
             }
