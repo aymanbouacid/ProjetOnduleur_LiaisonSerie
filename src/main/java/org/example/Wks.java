@@ -7,6 +7,7 @@ import org.example.modeles.ModelesQPIGS;
 import org.example.modeles.ModelesQPIRI;
 import org.example.modeles.ModelesQPIWS;
 
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 
@@ -28,39 +29,45 @@ public class Wks extends LiaisonSerie {
         try {
             if (serialPort.getInputBufferBytesCount()==110) {
                 Thread.sleep(500);
-                byte[] trameBrute = super.lireTrame(super.detecteSiReception());
-                StringBuilder sb = new StringBuilder();
+                byte[] trameBrute = super.lireTrame(110);
+                String st_trameBrute= new String(trameBrute,StandardCharsets.US_ASCII);
+                String dcp[]= st_trameBrute.split(" ");
+                System.out.println(dcp.length);
+                System.out.println(dcp[0]);
+                System.out.println(dcp[1]);
+//                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
+//                qpigs.setFrequenceReseaux(dcp[1]);
+//                qpigs.setTensionSortie(dcp[2]);
+//                qpigs.setFrequenceSortie(dcp[3]);
+//                qpigs.setPuissanceApparenteSortie(dcp[4]);
+//                qpigs.setPuissanceActiveSortie(dcp[5]);
+//                qpigs.setPourcentageChargeSortie(Integer.parseInt(dcp[6]));
+//                qpigs.setTensionBUS(dcp[7]);
+//                qpigs.setTensionBatterie(dcp[8]);
+//                qpigs.setCourantChargeBatterie(dcp[9]);
+//                qpigs.setCapaciteBatterie(Integer.parseInt(dcp[10]));
+//                qpigs.setTemperatureDissipateurThermiqueOnduleur(dcp[11]);
+//                qpigs.setCourantEntree1(dcp[12]);
+//                qpigs.setTensionEntree1(dcp[13]);
+//                qpigs.setTensionBatterieSCC1(dcp[14]);
+//                qpigs.setCourantDechargeBatterie(dcp[15]);
+//                qpigs.setEtatAppareil(Byte.parseByte(dcp[16]));
+//                qpigs.setDecalageTensionBatterieVentilateursAllumes(dcp[17]);
+//                qpigs.setVersionEEPROM(dcp[18]);
+//                qpigs.setPuissanceCharge1(dcp[19]);
+//                qpigs.setEtatAppareil(Byte.parseByte(dcp[20]));
 
-                for (byte b : trameBrute) {
-                    sb.append(String.format("%02X ", b));
-                }
-                String[] dcp = sb.toString().split(" ");
-                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
-                qpigs.setFrequenceReseaux(dcp[1]);
-                qpigs.setTensionSortie(dcp[2]);
-                qpigs.setFrequenceSortie(dcp[3]);
-                qpigs.setPuissanceApparenteSortie(dcp[4]);
-                qpigs.setPuissanceActiveSortie(dcp[5]);
-                qpigs.setPourcentageChargeSortie(Integer.parseInt(dcp[6]));
-                qpigs.setTensionBUS(dcp[7]);
-                qpigs.setTensionBatterie(dcp[8]);
-                qpigs.setCourantChargeBatterie(dcp[9]);
-                qpigs.setCapaciteBatterie(Integer.parseInt(dcp[10]));
-                qpigs.setTemperatureDissipateurThermiqueOnduleur(dcp[11]);
-                qpigs.setCourantEntree1(dcp[12]);
-                qpigs.setTensionEntree1(dcp[13]);
-                qpigs.setTensionBatterieSCC1(dcp[14]);
-                qpigs.setCourantDechargeBatterie(dcp[15]);
-                qpigs.setEtatAppareil(Byte.parseByte(dcp[16]));
-                qpigs.setDecalageTensionBatterieVentilateursAllumes(dcp[17]);
-                qpigs.setVersionEEPROM(dcp[18]);
-                qpigs.setPuissanceCharge1(dcp[19]);
-                qpigs.setEtatAppareil(Byte.parseByte(dcp[20]));
+
+//                System.out.println("réponse (hexa)  -> " + sb);
+//                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
+//
+//                for (int i = 1; i < 5+1; i++) {
+//                    System.out.println(dcp[i]);
+//                    System.out.println("tension du réseau" + hex_to_int(dcp[i]) );
+//                }
+//
 
 
-                System.out.println("réponse (hexa)  -> " + sb);
-                //System.out.println(sb.toString());
-                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
             }
 
             if (serialPort.getInputBufferBytesCount()==98) {
@@ -112,8 +119,6 @@ public class Wks extends LiaisonSerie {
                     sb.append(String.format("%02X ", b));
                 }
                 String[] dcp = sb.toString().split(" ");
-                qpiws.setReserved(dcp[1]);
-                String reserved = dcp[1];
                 qpiws.setDefaillanceOnduleur(dcp[2]);
                 qpiws.setBusOver(dcp[3]);
                 qpiws.setBusSous(dcp[4]);
@@ -211,5 +216,17 @@ public class Wks extends LiaisonSerie {
 
     public byte[] intToByteArray(int value) {
         return new byte[]{(byte) (value >>> 8), (byte) value};
+    }
+    public static int hex_to_int(String s)
+    {
+        String digits = "0123456789ABCDEF";
+        s = s.toUpperCase();
+        int val = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int d = digits.indexOf(c);
+            val = 16*val + d;
+        }
+        return val;
     }
 }
