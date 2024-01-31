@@ -33,8 +33,30 @@ public class Wks extends LiaisonSerie {
                 String st_trameBrute= new String(trameBrute,StandardCharsets.US_ASCII);
                 String dcp[]= st_trameBrute.split(" ");
                 System.out.println(dcp.length);
-                System.out.println(dcp[0]);
-                System.out.println(dcp[1]);
+                System.out.println(dcp[0].replace("(", "")+" V" + " = Tension du reseau");
+                System.out.println(dcp[1]+" Hz" + " = Frequence du reseau");
+                System.out.println(dcp[2]+" V" + " = Tension de sortie (AC)");
+                System.out.println(dcp[3]+" Hz" + " = Frequence de sortie (AC)");
+                System.out.println(dcp[4]+" VA"+ " = Puissance apparente de sortie CA");
+                System.out.println(dcp[5]+" W"+ " = Puissance active de sortie CA");
+                System.out.println(dcp[6]+" %"+ " = Pourcentage de charge de sortie");
+                System.out.println(dcp[7]+" V"+ " = Tension BUS");
+                System.out.println(dcp[8]+" V"+ " = Tension de la batterie");
+                System.out.println(dcp[9]+" A"+ " = Courant de charge de la batterie");
+                System.out.println(dcp[10]+" %"+ " = Capacite de la batterie");
+                System.out.println(dcp[11]+" °C (degres)"+ " = Température du dissipateur thermique de l onduleur");
+                System.out.println(dcp[12]+" A"+ " = Courant entree 1 PV");
+                System.out.println(dcp[13]+" V"+ " = Tension entree 1 PV");
+                System.out.println(dcp[14]+" V"+ " = Tension de la batterie a partir de SCC 1");
+                System.out.println(dcp[15]+" A"+ " = Courant de décharge de la batterie");
+                System.out.println(intToByteArray(Integer.parseInt(dcp[16])));
+                System.out.println(dcp[16]);
+                System.out.println(dcp[17]+" mV" + " = Decalage de la tension de la batterie pour les ventilateurs allumes");
+                System.out.println(dcp[18]+" " + " = Version EEPROM");
+                System.out.println(dcp[19]+" W" + " = Puissance de charge 1 PV");
+                System.out.println(dcp[20]+" " + " = Etat de l appareil");
+
+
 //                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
 //                qpigs.setFrequenceReseaux(dcp[1]);
 //                qpigs.setTensionSortie(dcp[2]);
