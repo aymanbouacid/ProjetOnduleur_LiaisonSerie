@@ -35,49 +35,78 @@ public class Wks extends LiaisonSerie {
                 System.out.println(dcp.length);
                 //System.out.println(dcp[0].replace("(", "")+" V" + " = Tension du reseau");
                 //System.out.println(dcp[1]+" Hz" + " = Frequence du reseau");
-                System.out.println(dcp[2]+" V" + " = Tension de sortie (AC)");
+                //System.out.println(dcp[2]+" V" + " = Tension de sortie (AC)");
                 //System.out.println(dcp[3]+" Hz" + " = Frequence de sortie (AC)");
-                System.out.println(dcp[4]+" VA"+ " = Puissance apparente de sortie CA");
-                System.out.println(dcp[5]+" W"+ " = Puissance active de sortie CA");
-                System.out.println(dcp[6]+" %"+ " = Pourcentage de charge de sortie");
+                //System.out.println(dcp[4]+" VA"+ " = Puissance apparente de sortie CA");
+                //System.out.println(dcp[5]+" W"+ " = Puissance active de sortie CA");
+                //System.out.println(dcp[6]+" %"+ " = Pourcentage de charge de sortie");
                 //System.out.println(dcp[7]+" V"+ " = Tension BUS");
                 //System.out.println(dcp[8]+" V"+ " = Tension de la batterie");
                 //System.out.println(dcp[9]+" A"+ " = Courant de charge de la batterie");
-                System.out.println(dcp[10]+" %"+ " = Capacite de la batterie");
+                //System.out.println(dcp[10]+" %"+ " = Capacite de la batterie");
                 //System.out.println(dcp[11]+" °C (degres)"+ " = Temperature du dissipateur thermique de l onduleur");
                 //System.out.println(dcp[12]+" A"+ " = Courant entree 1 PV");
                 //System.out.println(dcp[13]+" V"+ " = Tension entree 1 PV");
                 //System.out.println(dcp[14]+" V"+ " = Tension de la batterie a partir de SCC 1");
                 //System.out.println(dcp[15]+" A"+ " = Courant de décharge de la batterie");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16]);
-                System.out.print("si les 3 derniers chiffres sont 000 alors la batterie est out\n" +
-                        "si les 3 derniers chiffres sont 110 alors l appareil charge sur SCC1\n" +
-                        "si les 3 derniers chiffres sont 101 alors l appareil charge en courant alternatif \n" +
-                        "si les 3 derniers chiffres sont 111 alors l appareil charge avec SCC1 et charge sur CA\n");
-                System.out.println(dcp[16].toCharArray()[0] + " = ajout de la priorite SBU Version (oui:1 ; non:0)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[1] + " = Etat de la configuration (Change:1 ; unchanged:0)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[2] + " = Version du micrologiciel SCC (Update:1 ; unchanged:0)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[3] + " = Etat de la charge (Load off:1 ; Load on:0)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[4] + " = Etat de la tension de la batterie a stable pendant la charge");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[5] + " = Etat Charge ( Chargement/arret)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[6] + " = Etat de charge (SCC1 charge on/off)");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[16].toCharArray()[7] + " = Etat de charge (AC charge on/off)");
+//                System.out.print("Etat de l appareil : ");
+//                System.out.println(dcp[16]);
+//                System.out.print("si les 3 derniers chiffres sont 000 alors la batterie est out\n" +
+//                        "si les 3 derniers chiffres sont 110 alors l appareil charge sur SCC1\n" +
+//                        "si les 3 derniers chiffres sont 101 alors l appareil charge en courant alternatif \n" +
+//                        "si les 3 derniers chiffres sont 111 alors l appareil charge avec SCC1 et charge sur CA\n");
+                //System.out.println(dcp[16].toCharArray()[0] + " = ajout de la priorite SBU Version (oui:1 ; non:0)");
+                //System.out.print("Etat de l appareil : ");
+                //System.out.println(dcp[16].toCharArray()[1] + " = Etat de la configuration (Change:1 ; unchanged:0)");
+//                System.out.print("Etat de l appareil : ");
+//                System.out.println(dcp[16].toCharArray()[2] + " = Version du micrologiciel SCC (Update:1 ; unchanged:0)");
+             //   System.out.print("Etat de l appareil : ");
+//                System.out.println(dcp[16].toCharArray()[3] + " = Etat de la charge (Load off:1 ; Load on:0)");
+//                System.out.print("Etat de l appareil : ");
+                //System.out.println(dcp[16].toCharArray()[4] + " = Etat de la tension de la batterie a stable pendant la charge");
+               // System.out.print("Etat de l appareil : ");
+//                System.out.println(dcp[16].toCharArray()[5] + " = Etat Charge ( Chargement/arret)");
+               // System.out.print("Etat de l appareil : ");
+             //   System.out.println(dcp[16].toCharArray()[6] + " = Etat de charge (SCC1 charge on/off)");
+               // System.out.print("Etat de l appareil : ");
+              //  System.out.println(dcp[16].toCharArray()[7] + " = Etat de charge (AC charge on/off)");
                 //System.out.println(dcp[17]+" mV" + " = Decalage de la tension de la batterie pour les ventilateurs allumes");
                 //System.out.println(dcp[18]+ " = Version EEPROM");
-                System.out.println(dcp[19]+" W" + " = Puissance de charge 1 PV");
-                System.out.print("Etat de l appareil : ");
-                System.out.println(dcp[20]);
-                System.out.println(dcp[20].toCharArray()[0]+ " = drapeau pour charger a Mode flottant");
-                System.out.println(dcp[20].toCharArray()[1]+ " = appareil allumé (oui:1 ; non:0");
-                System.out.println(dcp[20].toCharArray()[2]+ " = reserved");
+              //  System.out.println(dcp[19]+" W" + " = Puissance de charge 1 PV");
+//                System.out.print("Etat de l appareil : ");
+//                System.out.println(dcp[20]);
+//                System.out.println(dcp[20].toCharArray()[0]+ " = drapeau pour charger a Mode flottant");
+                //System.out.println(dcp[20].toCharArray()[1]+ " = appareil allumé (oui:1 ; non:0");
+                //System.out.println(dcp[20].toCharArray()[2]+ " = reserved");
+
+                System.out.println("""
+                        
+                      %s V = Tension de sortie (AC)
+                      %s VA = Puissance apparente de sortie CA
+                      %s W = Puissance active de sortie CA
+                      %s /100 = Pourcentage de charge de sortie
+                      %s  /100 = Capacite de la batterie
+                      %s Etat appareil
+                      000 = appareil out ; 110 = appareil charge sur SCC1 \n 101 = appareil charge en courant alternatif \n 111 = appareil charge avec SCC1, charge sur CA
+                      %s  = ajout de la priorite SBU Version (oui:1 ; non:0)"
+                      %s = Etat de la configuration (Change:1 ; unchanged:0)
+                      %s = Version du micrologiciel SCC (Update:1 ; unchanged:0)
+                      %s = Etat de la charge (Load off:1 ; Load on:0)
+                      %s = Etat de la tension de la batterie a stable pendant la charge
+                      %s = Etat Charge ( Chargement/arret)
+                      %s = Etat de charge (SCC1 charge on/off)
+                      %s = Etat de charge (AC charge on/off)
+                      %s W = Puissance de charge 1 PV
+                      %s Etat appareil
+                      %s = drapeau pour charger a Mode flottant
+                      %s = appareil allumé (oui:1 ; non:0)
+                      %s = appareil allumé (oui:1 ; non:0)
+                      %s = reserved
+                      
+                      
+                        """.formatted(dcp[2],dcp[4],dcp[5],dcp[6],dcp[10],dcp[16],dcp[16].toCharArray()[0],dcp[16].toCharArray()[1],dcp[16].toCharArray()[2],
+                        dcp[16].toCharArray()[3],dcp[16].toCharArray()[4],dcp[16].toCharArray()[5],dcp[16].toCharArray()[6],dcp[16].toCharArray()[7],
+                        dcp[19],dcp[20],dcp[20].toCharArray()[0],dcp[20].toCharArray()[1],dcp[20].toCharArray()[1],dcp[20].toCharArray()[2]));
 //235246
 
             }
@@ -89,32 +118,32 @@ public class Wks extends LiaisonSerie {
                 String dcp[]= st_trameBrute.split(" ");
                 System.out.println(dcp.length);
                 System.out.println("");
-                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
-                qpiri.setTensionNominaleReseau(dcp[1]);
-                qpiri.setCourantNominalReseau(dcp[2]);
-                qpiri.setTensionNominaleSortie(dcp[3]);
-                qpiri.setFrequenceNominaleSortie(dcp[4]);
-                qpiri.setCourantNominalSortie(dcp[5]);
-                qpiri.setPuissanceApparenteNominaleSortie(dcp[6]);
-                qpiri.setPuissanceNominaleSortie_puissanceActive(dcp[7]);
-                qpiri.setTensionNominaleBatterie(dcp[8]);
-                qpiri.setTensionRechargeBatterie(dcp[9]);
-                qpiri.setBatterieSousTension(dcp[10]);
-                qpiri.setTensionApparenteBatterie(dcp[11]);
-                qpiri.setTensionFlottanteBatterie(dcp[12]);
-                qpiri.setTypeBatterie(dcp[13]);
-                qpiri.setCourantChargeACmax(dcp[14]);
-                qpiri.setCourantChargeMax(dcp[15]);
-                qpiri.setPlageTensionEntree(dcp[16]);
-                qpiri.setPrioriteSourceSortie(dcp[17]);
-                qpiri.setPrioriteSourceChargeur(dcp[18]);
-                qpiri.setNombreMaxParallele(dcp[19]);
-                qpiri.setTypeMachine(dcp[20]);
-                qpiri.setTopologie(dcp[21]);
-                qpiri.setModeSortie(dcp[22]);
-                qpiri.setTensionDechargeBatterie(dcp[23]);
-                qpiri.setConditionOKParallele(dcp[24]);
-                qpiri.setBilanPuissancePhotovoltaique(dcp[25]);
+//                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
+//                qpiri.setTensionNominaleReseau(dcp[1]);
+//                qpiri.setCourantNominalReseau(dcp[2]);
+//                qpiri.setTensionNominaleSortie(dcp[3]);
+//                qpiri.setFrequenceNominaleSortie(dcp[4]);
+//                qpiri.setCourantNominalSortie(dcp[5]);
+//                qpiri.setPuissanceApparenteNominaleSortie(dcp[6]);
+//                qpiri.setPuissanceNominaleSortie_puissanceActive(dcp[7]);
+//                qpiri.setTensionNominaleBatterie(dcp[8]);
+//                qpiri.setTensionRechargeBatterie(dcp[9]);
+//                qpiri.setBatterieSousTension(dcp[10]);
+//                qpiri.setTensionApparenteBatterie(dcp[11]);
+//                qpiri.setTensionFlottanteBatterie(dcp[12]);
+//                qpiri.setTypeBatterie(dcp[13]);
+//                qpiri.setCourantChargeACmax(dcp[14]);
+//                qpiri.setCourantChargeMax(dcp[15]);
+//                qpiri.setPlageTensionEntree(dcp[16]);
+//                qpiri.setPrioriteSourceSortie(dcp[17]);
+//                qpiri.setPrioriteSourceChargeur(dcp[18]);
+//                qpiri.setNombreMaxParallele(dcp[19]);
+//                qpiri.setTypeMachine(dcp[20]);
+//                qpiri.setTopologie(dcp[21]);
+//                qpiri.setModeSortie(dcp[22]);
+//                qpiri.setTensionDechargeBatterie(dcp[23]);
+//                qpiri.setConditionOKParallele(dcp[24]);
+//                qpiri.setBilanPuissancePhotovoltaique(dcp[25]);
 
 
 

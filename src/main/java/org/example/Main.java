@@ -11,6 +11,7 @@ public class Main {
         try {
             wks.initCom("COM3");
             wks.configurerParametres(2400,8,0,1);
+
             while(true){
                 wks.demandeQPIGS();
                 Thread.sleep(5000);
