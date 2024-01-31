@@ -9,13 +9,14 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         try {
-            wks.initCom("com3");
+            wks.initCom("COM3");
             wks.configurerParametres(2400,8,0,1);
-            wks.demandeQPIGS();
-            wks.demandeQPIRI();
-            wks.demandeQPIWS();
-            sc.nextLine();
-        } catch (SerialPortException e) {
+            while(true){
+                wks.demandeQPIGS();
+                Thread.sleep(5000);
+            }
+           // sc.nextLine();
+        } catch (SerialPortException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 

@@ -33,73 +33,62 @@ public class Wks extends LiaisonSerie {
                 String st_trameBrute= new String(trameBrute,StandardCharsets.US_ASCII);
                 String dcp[]= st_trameBrute.split(" ");
                 System.out.println(dcp.length);
-                System.out.println(dcp[0].replace("(", "")+" V" + " = Tension du reseau");
-                System.out.println(dcp[1]+" Hz" + " = Frequence du reseau");
+                //System.out.println(dcp[0].replace("(", "")+" V" + " = Tension du reseau");
+                //System.out.println(dcp[1]+" Hz" + " = Frequence du reseau");
                 System.out.println(dcp[2]+" V" + " = Tension de sortie (AC)");
-                System.out.println(dcp[3]+" Hz" + " = Frequence de sortie (AC)");
+                //System.out.println(dcp[3]+" Hz" + " = Frequence de sortie (AC)");
                 System.out.println(dcp[4]+" VA"+ " = Puissance apparente de sortie CA");
                 System.out.println(dcp[5]+" W"+ " = Puissance active de sortie CA");
                 System.out.println(dcp[6]+" %"+ " = Pourcentage de charge de sortie");
-                System.out.println(dcp[7]+" V"+ " = Tension BUS");
-                System.out.println(dcp[8]+" V"+ " = Tension de la batterie");
-                System.out.println(dcp[9]+" A"+ " = Courant de charge de la batterie");
+                //System.out.println(dcp[7]+" V"+ " = Tension BUS");
+                //System.out.println(dcp[8]+" V"+ " = Tension de la batterie");
+                //System.out.println(dcp[9]+" A"+ " = Courant de charge de la batterie");
                 System.out.println(dcp[10]+" %"+ " = Capacite de la batterie");
-                System.out.println(dcp[11]+" °C (degres)"+ " = Température du dissipateur thermique de l onduleur");
-                System.out.println(dcp[12]+" A"+ " = Courant entree 1 PV");
-                System.out.println(dcp[13]+" V"+ " = Tension entree 1 PV");
-                System.out.println(dcp[14]+" V"+ " = Tension de la batterie a partir de SCC 1");
-                System.out.println(dcp[15]+" A"+ " = Courant de décharge de la batterie");
-                System.out.println(intToByteArray(Integer.parseInt(dcp[16])));
+                //System.out.println(dcp[11]+" °C (degres)"+ " = Temperature du dissipateur thermique de l onduleur");
+                //System.out.println(dcp[12]+" A"+ " = Courant entree 1 PV");
+                //System.out.println(dcp[13]+" V"+ " = Tension entree 1 PV");
+                //System.out.println(dcp[14]+" V"+ " = Tension de la batterie a partir de SCC 1");
+                //System.out.println(dcp[15]+" A"+ " = Courant de décharge de la batterie");
+                System.out.print("Etat de l appareil : ");
                 System.out.println(dcp[16]);
-                System.out.println(dcp[17]+" mV" + " = Decalage de la tension de la batterie pour les ventilateurs allumes");
-                System.out.println(dcp[18]+" " + " = Version EEPROM");
+                System.out.print("si les 3 derniers chiffres sont 000 alors la batterie est out\n" +
+                        "si les 3 derniers chiffres sont 110 alors l appareil charge sur SCC1\n" +
+                        "si les 3 derniers chiffres sont 101 alors l appareil charge en courant alternatif \n" +
+                        "si les 3 derniers chiffres sont 111 alors l appareil charge avec SCC1 et charge sur CA\n");
+                System.out.println(dcp[16].toCharArray()[0] + " = ajout de la priorite SBU Version (oui:1 ; non:0)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[1] + " = Etat de la configuration (Change:1 ; unchanged:0)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[2] + " = Version du micrologiciel SCC (Update:1 ; unchanged:0)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[3] + " = Etat de la charge (Load off:1 ; Load on:0)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[4] + " = Etat de la tension de la batterie a stable pendant la charge");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[5] + " = Etat Charge ( Chargement/arret)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[6] + " = Etat de charge (SCC1 charge on/off)");
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[16].toCharArray()[7] + " = Etat de charge (AC charge on/off)");
+                //System.out.println(dcp[17]+" mV" + " = Decalage de la tension de la batterie pour les ventilateurs allumes");
+                //System.out.println(dcp[18]+ " = Version EEPROM");
                 System.out.println(dcp[19]+" W" + " = Puissance de charge 1 PV");
-                System.out.println(dcp[20]+" " + " = Etat de l appareil");
-
-
-//                qpigs.setTensionReseaux(dcp[0].replace("(", ""));
-//                qpigs.setFrequenceReseaux(dcp[1]);
-//                qpigs.setTensionSortie(dcp[2]);
-//                qpigs.setFrequenceSortie(dcp[3]);
-//                qpigs.setPuissanceApparenteSortie(dcp[4]);
-//                qpigs.setPuissanceActiveSortie(dcp[5]);
-//                qpigs.setPourcentageChargeSortie(Integer.parseInt(dcp[6]));
-//                qpigs.setTensionBUS(dcp[7]);
-//                qpigs.setTensionBatterie(dcp[8]);
-//                qpigs.setCourantChargeBatterie(dcp[9]);
-//                qpigs.setCapaciteBatterie(Integer.parseInt(dcp[10]));
-//                qpigs.setTemperatureDissipateurThermiqueOnduleur(dcp[11]);
-//                qpigs.setCourantEntree1(dcp[12]);
-//                qpigs.setTensionEntree1(dcp[13]);
-//                qpigs.setTensionBatterieSCC1(dcp[14]);
-//                qpigs.setCourantDechargeBatterie(dcp[15]);
-//                qpigs.setEtatAppareil(Byte.parseByte(dcp[16]));
-//                qpigs.setDecalageTensionBatterieVentilateursAllumes(dcp[17]);
-//                qpigs.setVersionEEPROM(dcp[18]);
-//                qpigs.setPuissanceCharge1(dcp[19]);
-//                qpigs.setEtatAppareil(Byte.parseByte(dcp[20]));
-
-
-//                System.out.println("réponse (hexa)  -> " + sb);
-//                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
-//
-//                for (int i = 1; i < 5+1; i++) {
-//                    System.out.println(dcp[i]);
-//                    System.out.println("tension du réseau" + hex_to_int(dcp[i]) );
-//                }
-//
-
+                System.out.print("Etat de l appareil : ");
+                System.out.println(dcp[20]);
+                System.out.println(dcp[20].toCharArray()[0]+ " = drapeau pour charger a Mode flottant");
+                System.out.println(dcp[20].toCharArray()[1]+ " = appareil allumé (oui:1 ; non:0");
+                System.out.println(dcp[20].toCharArray()[2]+ " = reserved");
+//235246
 
             }
 
             if (serialPort.getInputBufferBytesCount()==98) {
                 Thread.sleep(500);
-                byte[] trameBrute = super.lireTrame(super.detecteSiReception());
-                StringBuilder sb = new StringBuilder();
-                for (byte b : trameBrute) {
-                    sb.append(String.format("%02X ", b));
-                }
-                String[] dcp = sb.toString().split(" ");
+                byte[] trameBrute = super.lireTrame(98);
+                String st_trameBrute= new String(trameBrute,StandardCharsets.US_ASCII);
+                String dcp[]= st_trameBrute.split(" ");
+                System.out.println(dcp.length);
+                System.out.println("");
                 qpigs.setTensionReseaux(dcp[0].replace("(", ""));
                 qpiri.setTensionNominaleReseau(dcp[1]);
                 qpiri.setCourantNominalReseau(dcp[2]);
@@ -127,9 +116,6 @@ public class Wks extends LiaisonSerie {
                 qpiri.setConditionOKParallele(dcp[24]);
                 qpiri.setBilanPuissancePhotovoltaique(dcp[25]);
 
-
-                System.out.println("réponse (hexa)  -> " + sb);
-                System.out.println("réponse (ascii) -> " + new String(trameBrute, StandardCharsets.US_ASCII));
 
 
             }
